@@ -1,4 +1,4 @@
-# NestJS Hexagonal Architecture Example (Port Adapter)
+# NestJS Hexagonal Architecture Example
 
 ## Installation and Running
 
