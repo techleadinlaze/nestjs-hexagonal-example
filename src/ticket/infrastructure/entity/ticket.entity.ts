@@ -1,4 +1,4 @@
-import { Ticket, TicketStatus } from 'src/ticket/domain/model/ticket.model';
+import { Ticket, TicketStatus } from 'src/ticket/domain/ticket.model';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

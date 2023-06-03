@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TicketRepository } from 'src/ticket/domain/respository/ticket.repository';
+import { TicketRepository } from 'src/ticket/domain/ticket.repository';
 import TicketsEntity from '../entity/ticket.entity';
-import { Ticket } from 'src/ticket/domain/model/ticket.model';
+import { Ticket } from 'src/ticket/domain/ticket.model';
 
 @Injectable()
 export class TicketTypeOrm implements TicketRepository {

@@ -1,22 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Ticket } from '../../domain/model/ticket.model';
-import { TicketRepository } from '../../domain/respository/ticket.repository';
+import { Ticket } from '../../domain/ticket.model';
+import { TicketRepository } from '../../domain/ticket.repository';
 
 /**
  * The implementation of the inbound port ITicketService.
  */
 @Injectable()
-export class TicketService {
+export class TicketCreator {
   constructor(
     @Inject(TicketRepository)
     private readonly tickerRepository: TicketRepository,
   ) {}
 
-  async findAll(query): Promise<Ticket[]> {
-    return await this.tickerRepository.findAll(query);
-  }
-
-  async create(body): Promise<Ticket> {
+  async run(body): Promise<Ticket> {
     const ticket: Ticket = {
       description: body.description,
       priority: body.priority,

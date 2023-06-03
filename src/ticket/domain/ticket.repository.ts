@@ -1,4 +1,4 @@
-import { Ticket } from '../model/ticket.model';
+import { Ticket } from './ticket.model';
 
 /**
  * Interface for Ticket Repository, outbound port
