@@ -1,6 +1,6 @@
 export interface Note {
   id?: number;
-  tiket: number;
+  ticket: number;
   description: string;
   createdAt?: Date;
 }

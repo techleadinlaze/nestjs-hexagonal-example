@@ -1,9 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TicketRepository } from 'src/ticket/domain/ticket.repository';
-import TicketsEntity from '../entity/ticket.entity';
+import { TicketsEntity } from '../entities/ticket.entity';
 import { Ticket } from 'src/ticket/domain/ticket.model';
+import { TicketId } from 'src/ticket/domain/ticked_id';
 
 @Injectable()
 export class TicketTypeOrm implements TicketRepository {
@@ -11,6 +12,10 @@ export class TicketTypeOrm implements TicketRepository {
     @InjectRepository(TicketsEntity)
     private ticketsRepository: Repository<TicketsEntity>,
   ) {}
+
+  findById(id: TicketId): Promise<Ticket> {
+    throw new Error('Method not implemented.');
+  }
 
   async findAll(query): Promise<Ticket[]> {
     const search = query.search || '';

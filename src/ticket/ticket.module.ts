@@ -3,9 +3,9 @@ import { TicketController } from './controllers/ticket.controller';
 import { TicketRepository } from './domain/ticket.repository';
 import { TicketInMemory } from './infrastructure/driven/ticket.memory';
 import { TicketTypeOrm } from './infrastructure/driven/ticket.typeorm';
-import TicketsEntity from './infrastructure/entity/ticket.entity';
+import { TicketsEntity } from './infrastructure/entities/ticket.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TicketCreator } from './application/create/ticket-create.service';
+import { TicketCreator } from './application/create/ticket_creator.service';
 import { TicketFinder } from './application/find/ticket-create.service';
 
 @Module({

@@ -15,7 +15,7 @@ export class NoteCreator {
   async run(body): Promise<Note> {
     const Note: Note = {
       description: body.description,
-      tiket: body.tiketId,
+      ticket: body.tiketId,
     };
     await this.noteRepository.create(Note);
     return Note;

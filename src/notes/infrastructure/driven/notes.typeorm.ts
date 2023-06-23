@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { NoteRepository } from 'src/notes/domain/notes.repository';
-import NotesEntity from '../entity/notes.entity';
+import NotesEntity from '../entities/notes.entity';
 import { Note } from 'src/notes/domain/notes.model';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class NoteTypeOrm implements NoteRepository {
   async findAll(query): Promise<Note[]> {
     const search = query.search || '';
     const notes = this.notesRepository.createQueryBuilder('notes');
-    notes.innerJoinAndSelect('notes.tiket', 'tiket');
+    notes.innerJoinAndSelect('notes.ticket', 'ticket');
     if (search) {
       notes.where('description ILIKE lower(:search)', {
         search: `%${search}%`,

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
 import { TicketFinder } from '../application/find/ticket-create.service';
-import { TicketCreator } from '../application/create/ticket-create.service';
+import { TicketCreator } from '../application/create/ticket_creator.service';
 
 @Controller('ticket')
 export class TicketController {

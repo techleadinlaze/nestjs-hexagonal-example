@@ -1,8 +1,7 @@
-import { Ticket, TicketStatus } from 'src/ticket/domain/ticket.model';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-class TicketsEntity implements Ticket {
+export class TicketsEntity {
   constructor(obj: Partial<TicketsEntity>) {
     Object.assign(this, obj);
   }
@@ -13,8 +12,8 @@ class TicketsEntity implements Ticket {
   @Column()
   public description: string;
 
-  @Column({ type: 'enum', enum: TicketStatus, default: TicketStatus.OPEN })
-  public status: TicketStatus;
+  @Column({ default: 'OPEN' })
+  public status: string;
 
   @Column()
   public priority: number;
@@ -26,5 +25,3 @@ class TicketsEntity implements Ticket {
   })
   createdAt: Date;
 }
-
-export default TicketsEntity;

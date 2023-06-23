@@ -6,6 +6,8 @@ import { NotesModule } from './notes/notes.module';
 
 @Module({
   imports: [
+    TicketModule,
+    NotesModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),
@@ -23,8 +25,6 @@ import { NotesModule } from './notes/notes.module';
         synchronize: true,
       }),
     }),
-    TicketModule,
-    NotesModule,
   ],
   controllers: [],
   providers: [],

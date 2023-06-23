@@ -1,5 +1,5 @@
 import { Logger, Module } from '@nestjs/common';
-import NotesEntity from './infrastructure/entity/notes.entity';
+import NotesEntity from './infrastructure/entities/notes.entity';
 import { NoteController } from './controllers/notes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NoteFinder } from './application/find/note-create.service';

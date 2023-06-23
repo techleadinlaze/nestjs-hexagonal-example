@@ -10,7 +10,7 @@ export class NoteInMemory implements NoteRepository {
   private readonly notes: Note[] = [
     {
       id: 1,
-      tiket: 1,
+      ticket: 1,
       description: '',
       createdAt: new Date(),
     },

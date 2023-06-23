@@ -1,6 +1,12 @@
 import { Note } from 'src/notes/domain/notes.model';
-import TicketsEntity from 'src/ticket/infrastructure/entity/ticket.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { TicketsEntity } from 'src/ticket/infrastructure/entities/ticket.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 class NotesEntity implements Note {
@@ -12,7 +18,11 @@ class NotesEntity implements Note {
   public id: number;
 
   @ManyToOne(() => TicketsEntity, (ticket) => ticket.id)
-  tiket: number;
+  @JoinColumn({ name: 'ticketId' })
+  ticket: number;
+
+  @Column()
+  public ticketId: number;
 
   @Column()
   public description: string;
