@@ -1,25 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { EntitySchema, Repository } from 'typeorm';
 import { TicketRepository } from 'src/ticket/domain/ticket.repository';
 import { TicketsEntity } from '../entities/ticket.entity';
 import { Ticket } from 'src/ticket/domain/ticket.model';
 import { TicketId } from 'src/ticket/domain/ticked_id';
+import { TypeOrmRepository } from 'src/shared/infrastructure/persistence/typeorm.repository';
 
 @Injectable()
-export class TicketTypeOrm implements TicketRepository {
-  constructor(
-    @InjectRepository(TicketsEntity)
-    private ticketsRepository: Repository<TicketsEntity>,
-  ) {}
-
-  findById(id: TicketId): Promise<Ticket> {
-    throw new Error('Method not implemented.');
+export class TicketTypeOrm
+  extends TypeOrmRepository<Ticket>
+  implements TicketRepository
+{
+  protected entitySchema(): EntitySchema<Ticket> {
+    return TicketsEntity;
   }
 
-  async findAll(query): Promise<Ticket[]> {
+  public async findById(id: TicketId): Promise<Ticket | null> {
+    const repository = await this.repository();
+
+    const ticket = await repository.createQueryBuilder();
+    ticket.where('id = :id', { id: id.toString() });
+
+    return ticket.getOne();
+  }
+
+  public async findAll(query: any): Promise<Ticket[]> {
     const search = query.search || '';
-    const tickets = this.ticketsRepository.createQueryBuilder();
+    const repository = await this.repository();
+    const tickets = await repository.createQueryBuilder();
     if (search) {
       tickets.where('description ILIKE lower(:search)', {
         search: `%${search}%`,
@@ -28,11 +37,9 @@ export class TicketTypeOrm implements TicketRepository {
     return await tickets.getMany();
   }
 
-  async create(ticket: Ticket): Promise<any> {
+  public async create(ticket: Ticket): Promise<Ticket> {
     try {
-      const newTicket = new TicketsEntity(ticket);
-      await this.ticketsRepository.save(newTicket);
-      return newTicket;
+      return await this.persist(ticket);
     } catch (error) {
       throw error;
     }

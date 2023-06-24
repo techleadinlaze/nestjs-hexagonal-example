@@ -4,8 +4,8 @@ import { NoteController } from './controllers/notes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NoteFinder } from './application/find/note-create.service';
 import { NoteRepository } from './domain/notes.repository';
-import { NoteTypeOrm } from './infrastructure/driven/notes.typeorm';
 import { NoteCreator } from './application/create/note-create.service';
+import { NoteInMemory } from './infrastructure/driven/notes.memory';
 
 @Module({
   imports: [Logger, TypeOrmModule.forFeature([NotesEntity])],
@@ -14,12 +14,12 @@ import { NoteCreator } from './application/create/note-create.service';
     NoteFinder,
     {
       provide: NoteRepository,
-      useClass: NoteTypeOrm,
+      useClass: NoteInMemory,
     },
     NoteCreator,
     {
       provide: NoteRepository,
-      useClass: NoteTypeOrm,
+      useClass: NoteInMemory,
     },
   ],
 })

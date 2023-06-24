@@ -12,12 +12,12 @@ export class NoteCreator {
     private readonly noteRepository: NoteRepository,
   ) {}
 
-  async run(body): Promise<Note> {
-    const Note: Note = {
+  async run(body: any): Promise<Note> {
+    const note: Note = {
       description: body.description,
-      ticket: body.tiketId,
+      ticketId: body.ticketId,
     };
-    await this.noteRepository.create(Note);
-    return Note;
+    await this.noteRepository.create(note);
+    return note;
   }
 }

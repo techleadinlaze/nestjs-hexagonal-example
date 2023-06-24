@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TicketModule } from './ticket/ticket.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, getDataSourceToken } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NotesModule } from './notes/notes.module';
+import { TypeOrmRepository } from './shared/infrastructure/persistence/typeorm.repository';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -27,6 +29,5 @@ import { NotesModule } from './notes/notes.module';
     }),
   ],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}

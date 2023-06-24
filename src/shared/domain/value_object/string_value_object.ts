@@ -1,7 +1,3 @@
-export abstract class StringValueObject {
-  public constructor(private readonly _value: string) {}
+import { ValueObject } from './value_objects';
 
-  public value(): string {
-    return this._value;
-  }
-}
+export abstract class StringValueObject extends ValueObject<string> {}

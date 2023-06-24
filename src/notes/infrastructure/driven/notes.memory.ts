@@ -10,7 +10,7 @@ export class NoteInMemory implements NoteRepository {
   private readonly notes: Note[] = [
     {
       id: 1,
-      ticket: 1,
+      ticketId: 1,
       description: '',
       createdAt: new Date(),
     },
@@ -19,13 +19,13 @@ export class NoteInMemory implements NoteRepository {
   create(note: Note): Promise<Note> {
     this.notes.push(note);
     return new Promise((resolve) => {
-      return note;
+      return resolve(note);
     });
   }
 
   findAll(query): Promise<Note[]> {
     return new Promise((resolve) => {
-      return this.notes;
+      return resolve(this.notes);
     });
   }
 }

@@ -15,12 +15,12 @@ import { TicketFinder } from './application/find/ticket-create.service';
     TicketFinder,
     {
       provide: TicketRepository,
-      useClass: TicketTypeOrm,
+      useClass: TicketInMemory,
     },
     TicketCreator,
     {
       provide: TicketRepository,
-      useClass: TicketTypeOrm,
+      useClass: TicketInMemory,
     },
   ],
 })

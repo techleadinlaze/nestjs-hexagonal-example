@@ -1,11 +1,7 @@
-export abstract class NumberValueObject {
-  public constructor(private readonly _value: number) {}
+import { ValueObject } from './value_objects';
 
-  public value(): number {
-    return this._value;
-  }
-
-  public toString(): string {
-    return this.value().toString();
+export abstract class NumberValueObject extends ValueObject<number> {
+  isBiggerThan(other: NumberValueObject): boolean {
+    return this.value > other.value;
   }
 }
