@@ -1,26 +1,25 @@
 import { Logger, Module } from '@nestjs/common';
 import { TicketController } from './controllers/ticket.controller';
 import { TicketRepository } from './domain/ticket.repository';
-import { TicketInMemory } from './infrastructure/driven/ticket.memory';
-import { TicketTypeOrm } from './infrastructure/driven/ticket.typeorm';
-import { TicketsEntity } from './infrastructure/entities/ticket.entity';
+import { TicketInMemory } from './infrastructure/presistence/ticket.memory';
+import { TicketTypeOrm } from './infrastructure/presistence/ticket.typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TicketCreator } from './application/create/ticket_creator.service';
 import { TicketFinder } from './application/find/ticket-create.service';
 
 @Module({
-  imports: [Logger, TypeOrmModule.forFeature([TicketsEntity])],
+  imports: [Logger],
   controllers: [TicketController],
   providers: [
     TicketFinder,
     {
       provide: TicketRepository,
-      useClass: TicketInMemory,
+      useClass: TicketTypeOrm,
     },
     TicketCreator,
     {
       provide: TicketRepository,
-      useClass: TicketInMemory,
+      useClass: TicketTypeOrm,
     },
   ],
 })

@@ -21,6 +21,20 @@ export class TicketInMemory implements TicketRepository {
     const createdAt = new Date();
     const ticket = new Ticket(id, description, status, priority, createdAt);
     this.tickets.push(ticket);
+
+    const id2 = TicketId.random();
+    const description2 = new TicketDescription('description 2');
+    const status2 = new TicketStatus('OPEN');
+    const priority2 = new TicketPriority(1);
+    const createdAt2 = new Date();
+    const ticket2 = new Ticket(
+      id2,
+      description2,
+      status2,
+      priority2,
+      createdAt2,
+    );
+    this.tickets.push(ticket2);
   }
 
   public async create(ticket: Ticket): Promise<Ticket> {

@@ -7,7 +7,7 @@ import { Ticket } from 'src/ticket/domain/ticket.model';
 import { EntitySchema } from 'typeorm';
 
 export const TicketsEntity = new EntitySchema<Ticket>({
-  name: 'Tickets',
+  name: 'Ticket',
   tableName: 'tickets',
   target: Ticket,
   columns: {

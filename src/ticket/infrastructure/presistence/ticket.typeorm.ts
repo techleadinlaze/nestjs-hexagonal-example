@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntitySchema, Repository } from 'typeorm';
 import { TicketRepository } from 'src/ticket/domain/ticket.repository';
-import { TicketsEntity } from '../entities/ticket.entity';
+import { TicketsEntity } from './typeorm/ticket.entity';
 import { Ticket } from 'src/ticket/domain/ticket.model';
 import { TicketId } from 'src/ticket/domain/ticked_id';
 import { TypeOrmRepository } from 'src/shared/infrastructure/persistence/typeorm.repository';
