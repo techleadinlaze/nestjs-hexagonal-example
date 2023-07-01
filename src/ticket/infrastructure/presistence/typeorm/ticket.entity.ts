@@ -1,4 +1,5 @@
 import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/value_object_transformer';
+import { TicketCreatedAt } from 'src/ticket/domain/ticked_created_at';
 import { TicketDescription } from 'src/ticket/domain/ticked_description';
 import { TicketId } from 'src/ticket/domain/ticked_id';
 import { TicketPriority } from 'src/ticket/domain/ticked_priority';
@@ -33,6 +34,7 @@ export const TicketsEntity = new EntitySchema<Ticket>({
       type: 'timestamptz',
       name: 'created_at',
       default: () => 'CURRENT_TIMESTAMP',
+      transformer: ValueObjectTransformer(TicketCreatedAt),
     },
   },
 });

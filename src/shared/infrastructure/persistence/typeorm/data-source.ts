@@ -1,14 +1,21 @@
-import { TicketsEntity } from 'src/ticket/infrastructure/presistence/typeorm/ticket.entity';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import * as dotenv from 'dotenv';
+import { join } from 'path';
+dotenv.config();
 
 const options: DataSourceOptions = {
   type: 'postgres',
-  host: 'localhost',
-  port: 5433,
-  username: 'postgres',
-  password: 'xxxxxxxxx',
-  database: 'tickets',
-  entities: [TicketsEntity],
+  host: process.env.POSTGRES_HOST,
+  port: Number(process.env.POSTGRES_PORT),
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
+  entities: [
+    join(
+      __dirname,
+      '../../../../**/infrastructure/presistence/typeorm/*entity{.ts,.js}',
+    ),
+  ],
   synchronize: true,
   logging: true,
 };

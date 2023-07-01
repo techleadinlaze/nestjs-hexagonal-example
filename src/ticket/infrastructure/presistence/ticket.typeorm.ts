@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { EntitySchema, Repository } from 'typeorm';
+import { EntitySchema } from 'typeorm';
 import { TicketRepository } from 'src/ticket/domain/ticket.repository';
 import { TicketsEntity } from './typeorm/ticket.entity';
 import { Ticket } from 'src/ticket/domain/ticket.model';
@@ -18,8 +17,7 @@ export class TicketTypeOrm
 
   public async findById(id: TicketId): Promise<Ticket | null> {
     const repository = await this.repository();
-
-    const ticket = await repository.createQueryBuilder();
+    const ticket = repository.createQueryBuilder();
     ticket.where('id = :id', { id: id.toString() });
 
     return ticket.getOne();
@@ -28,7 +26,7 @@ export class TicketTypeOrm
   public async findAll(query: any): Promise<Ticket[]> {
     const search = query.search || '';
     const repository = await this.repository();
-    const tickets = await repository.createQueryBuilder();
+    const tickets = repository.createQueryBuilder();
     if (search) {
       tickets.where('description ILIKE lower(:search)', {
         search: `%${search}%`,

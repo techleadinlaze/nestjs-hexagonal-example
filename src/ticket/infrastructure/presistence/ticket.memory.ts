@@ -5,6 +5,7 @@ import { TicketId } from 'src/ticket/domain/ticked_id';
 import { TicketDescription } from 'src/ticket/domain/ticked_description';
 import { TicketStatus } from 'src/ticket/domain/ticked_status';
 import { TicketPriority } from 'src/ticket/domain/ticked_priority';
+import { TicketCreatedAt } from 'src/ticket/domain/ticked_created_at';
 
 /**
  * This is the implementation of output port, to store things in memory.
@@ -18,7 +19,7 @@ export class TicketInMemory implements TicketRepository {
     const description = new TicketDescription('description');
     const status = new TicketStatus('OPEN');
     const priority = new TicketPriority(2);
-    const createdAt = new Date();
+    const createdAt = new TicketCreatedAt(new Date().toISOString());
     const ticket = new Ticket(id, description, status, priority, createdAt);
     this.tickets.push(ticket);
 
@@ -26,7 +27,7 @@ export class TicketInMemory implements TicketRepository {
     const description2 = new TicketDescription('description 2');
     const status2 = new TicketStatus('OPEN');
     const priority2 = new TicketPriority(1);
-    const createdAt2 = new Date();
+    const createdAt2 = new TicketCreatedAt(new Date().toISOString());
     const ticket2 = new Ticket(
       id2,
       description2,

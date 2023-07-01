@@ -2,33 +2,40 @@ import { TicketDescription } from './ticked_description';
 import { TicketId } from './ticked_id';
 import { TicketPriority } from './ticked_priority';
 import { TicketStatus } from './ticked_status';
+import { TicketCreatedAt } from './ticked_created_at';
 
 export class Ticket {
   public constructor(
-    private readonly _id: TicketId,
-    private readonly _description: TicketDescription,
-    private readonly _status: TicketStatus,
-    private readonly _priority: TicketPriority,
-    private readonly _createdAt: Date,
+    public readonly id: TicketId,
+    public readonly description: TicketDescription,
+    public readonly status: TicketStatus,
+    public readonly priority: TicketPriority,
+    public readonly createdAt: TicketCreatedAt,
   ) {}
 
-  public id(): TicketId {
-    return this._id;
+  static fromPrimitives(plainData: {
+    id: string;
+    description: string;
+    status: string;
+    priority: number;
+    createdAt: string;
+  }): Ticket {
+    return new Ticket(
+      new TicketId(plainData.id),
+      new TicketDescription(plainData.description),
+      new TicketStatus(plainData.status),
+      new TicketPriority(plainData.priority),
+      new TicketCreatedAt(plainData.createdAt),
+    );
   }
 
-  public description(): TicketDescription {
-    return this._description;
-  }
-
-  public status(): TicketStatus {
-    return this._status;
-  }
-
-  public priority(): TicketPriority {
-    return this._priority;
-  }
-
-  public createdAt(): Date {
-    return this._createdAt;
+  toPrimitives(): any {
+    return {
+      id: this.id.value,
+      description: this.description.value,
+      status: this.status.value,
+      priority: this.priority.value,
+      createdAt: this.createdAt.toString(),
+    };
   }
 }
