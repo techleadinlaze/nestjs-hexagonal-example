@@ -6,7 +6,7 @@ const options: DataSourceOptions = {
   host: 'localhost',
   port: 5433,
   username: 'postgres',
-  password: 'Tiendo%2018$',
+  password: 'xxxxxxxxx',
   database: 'tickets',
   entities: [TicketsEntity],
   synchronize: true,
