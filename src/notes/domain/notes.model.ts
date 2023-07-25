@@ -1,6 +1,8 @@
-export interface Note {
-  id?: number;
-  ticketId: number;
-  description: string;
-  createdAt?: Date;
+export class Note {
+  constructor(
+    public readonly id: string,
+    public readonly ticketId: string,
+    public readonly description: string,
+    public readonly createdAt: Date,
+  ) {}
 }

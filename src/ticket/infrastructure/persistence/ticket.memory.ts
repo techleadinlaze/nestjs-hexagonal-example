@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Ticket } from '../../domain/ticket.model';
-import { TicketRepository } from '../../domain/ticket.repository';
-import { TicketId } from 'src/ticket/domain/ticked_id';
-import { TicketDescription } from 'src/ticket/domain/ticked_description';
-import { TicketStatus } from 'src/ticket/domain/ticked_status';
-import { TicketPriority } from 'src/ticket/domain/ticked_priority';
-import { TicketCreatedAt } from 'src/ticket/domain/ticked_created_at';
+import { Ticket } from '@app/ticket/domain/ticket.model';
+import { TicketRepository } from '@app/ticket/domain/ticket.repository';
+import { TicketId } from '@app/ticket/domain/ticked_id';
+import { TicketDescription } from '@app/ticket/domain/ticked_description';
+import { TicketStatus } from '@app/ticket/domain/ticked_status';
+import { TicketPriority } from '@app/ticket/domain/ticked_priority';
+import { TicketCreatedAt } from '@app/ticket/domain/ticked_created_at';
 
 /**
  * This is the implementation of output port, to store things in memory.

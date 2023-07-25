@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { TicketRepository } from '../../domain/ticket.repository';
-import { Ticket } from '../../domain/ticket.model';
-import { TicketPrimitive } from 'src/ticket/domain/ticket.primitive';
+import { TicketRepository } from '@app/ticket/domain/ticket.repository';
+import { Ticket } from '@app/ticket/domain/ticket.model';
+import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
 
 @Injectable()
 export class TicketCreator {

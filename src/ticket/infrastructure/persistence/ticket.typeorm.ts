@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { EntitySchema } from 'typeorm';
-import { TicketRepository } from 'src/ticket/domain/ticket.repository';
-import { TicketsEntity } from './typeorm/ticket.entity';
-import { Ticket } from 'src/ticket/domain/ticket.model';
-import { TicketId } from 'src/ticket/domain/ticked_id';
-import { TypeOrmRepository } from 'src/shared/infrastructure/persistence/typeorm.repository';
+import { TicketRepository } from '@app/ticket/domain/ticket.repository';
+import { TicketsEntity } from '@app/ticket/infrastructure/persistence/typeorm/ticket.entity';
+import { Ticket } from '@app/ticket/domain/ticket.model';
+import { TicketId } from '@app/ticket/domain/ticked_id';
+import { TypeOrmRepository } from '@app/shared/infrastructure/persistence/typeorm.repository';
 
 @Injectable()
 export class TicketTypeOrm

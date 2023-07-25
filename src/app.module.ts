@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { TicketModule } from './ticket/ticket.module';
+import { TicketModule } from '@app/ticket/ticket.module';
 import { ConfigModule } from '@nestjs/config';
-import { NotesModule } from './notes/notes.module';
+import { NotesModule } from '@app/notes/notes.module';
 
 @Module({
   imports: [

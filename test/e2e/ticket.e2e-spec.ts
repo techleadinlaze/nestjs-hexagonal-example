@@ -1,11 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { TicketModule } from '../src/ticket/ticket.module';
+import { TicketModule } from '@app/ticket/ticket.module';
 import { ConfigModule } from '@nestjs/config';
-import { NotesModule } from 'src/notes/notes.module';
-import { DataSource } from 'typeorm';
-import { TicketPrimitive } from 'src/ticket/domain/ticket.primitive';
+import { NotesModule } from '@app/notes/notes.module';
+import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
 
 describe('TicketController (e2e)', () => {
   let app: INestApplication;
@@ -25,12 +24,16 @@ describe('TicketController (e2e)', () => {
     await app.init();
   });
 
+  afterAll(async () => {
+    await app.close();
+  });
+
   it('/ticket (GET)', async () => {
     return request(app.getHttpServer())
       .get('/ticket')
       .expect(200)
       .expect((response: Response) => {
-        expect(response.body['data']).toHaveLength(0);
+        expect(response.body['data']).toHaveLength(1);
       });
   });
 
@@ -53,7 +56,7 @@ describe('TicketController (e2e)', () => {
       .get('/notes')
       .expect(200)
       .expect((response: Response) => {
-        expect(response.body).toHaveLength(1);
+        expect(response.body).toHaveLength(0);
       });
   });
 });

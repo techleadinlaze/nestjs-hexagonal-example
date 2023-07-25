@@ -1,8 +1,8 @@
-import { NewableClass } from '../../../domain/newable_class';
+import { NewableClass } from '@app/shared/domain/newable_class';
 import {
   Primitives,
   ValueObject,
-} from '../../../domain/value_object/value_objects';
+} from '@app/shared/domain/value_object/value_objects';
 
 export const ValueObjectTransformer = <T extends Primitives>(
   ValueObject: NewableClass<ValueObject<any>>,
