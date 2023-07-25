@@ -1,7 +1,9 @@
+import { Status } from '../enum/status.enum';
+
 export interface TicketPrimitive {
   id: string;
   description: string;
-  status: string;
+  status: Status;
   priority: number;
   createdAt: string;
 }

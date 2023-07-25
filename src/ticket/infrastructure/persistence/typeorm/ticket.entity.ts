@@ -5,6 +5,7 @@ import { TicketId } from '@app/ticket/domain/ticked_id';
 import { TicketPriority } from '@app/ticket/domain/ticked_priority';
 import { TicketStatus } from '@app/ticket/domain/ticked_status';
 import { Ticket } from '@app/ticket/domain/ticket.model';
+import { Status } from '@app/ticket/enum/status.enum';
 import { EntitySchema } from 'typeorm';
 
 export const TicketsEntity = new EntitySchema<Ticket>({
@@ -24,6 +25,7 @@ export const TicketsEntity = new EntitySchema<Ticket>({
     status: {
       type: 'character varying',
       default: 'OPEN',
+      enum: Status,
       transformer: ValueObjectTransformer(TicketStatus),
     },
     priority: {

@@ -27,6 +27,7 @@
     "@nestjs/platform-express": "^7.6.15",
     "@nestjs/typeorm": "^9.0.1",
     "class-validator": "^0.13.2",
+    "faker": "^6.6.6",
     "nestjs-joi": "^1.9.0",
     "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
@@ -36,6 +37,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@nestjs/cli": "^7.6.0",
     "@nestjs/schematics": "^7.3.0",
     "@nestjs/testing": "^7.6.15",
@@ -75,7 +77,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "^@app/(.*)$": "<rootDir>/../src/$1"
+      "^@app/(.*)$": "<rootDir>/../src/$1",
+      "^@testApp/(.*)$": "<rootDir>/$1"
     }
   }
 }

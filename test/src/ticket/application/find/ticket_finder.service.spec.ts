@@ -1,6 +1,8 @@
 import { TicketFinder } from '@app/ticket/application/find/ticket_finder.service';
 import { TicketsResponse } from '@app/ticket/application/find/tickets_response';
-import { TicketRepositoryMock } from '../../domain/ticket_repository.mock';
+import { TicketRepositoryMock } from '../../infrastructure/ticket_repository.mock';
+import { Ticket } from '@app/ticket/domain/ticket.model';
+import { TicketMother } from '../../domain/ticket.mother.';
 
 jest.mock('@app/ticket/domain/ticket.repository');
 
@@ -19,7 +21,10 @@ describe('TicketFinder', () => {
   });
 
   it('it should return a success ticket', async () => {
-    const tickets = await repositoryMock.findAll();
+    const tickets: Ticket[] = [TicketMother.random(), TicketMother.random()];
+    jest
+      .spyOn(repositoryMock, 'findAll')
+      .mockReturnValue(Promise.resolve(tickets));
     const response = new TicketsResponse(tickets, true, 'ok');
     expect((await service.run({})).data).toEqual(response.data);
   });

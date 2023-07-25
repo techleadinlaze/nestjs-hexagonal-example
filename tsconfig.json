@@ -3,7 +3,8 @@
     "baseUrl": "./",
     "module": "commonjs",
     "paths": {
-      "@app/*": ["src/*"]
+      "@app/*": ["src/*"],
+      "@testApp/*": ["test/*"]
     },
     "declaration": true,
     "removeComments": true,
