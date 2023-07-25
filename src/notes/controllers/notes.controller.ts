@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
-import { NoteFinder } from '../application/find/note-create.service';
-import { NoteCreator } from '../application/create/note-create.service';
+import { NoteFinder } from '@app/notes/application/find/note-create.service';
+import { NoteCreator } from '@app/notes/application/create/note-create.service';
 
 @Controller('notes')
 export class NoteController {

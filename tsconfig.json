@@ -2,6 +2,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "module": "commonjs",
+    "paths": {
+      "@app/*": ["src/*"]
+    },
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -17,5 +20,10 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
+  },
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
   }
 }

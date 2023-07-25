@@ -1,10 +1,10 @@
-import { ValueObjectTransformer } from 'src/shared/infrastructure/persistence/typeorm/value_object_transformer';
-import { TicketCreatedAt } from 'src/ticket/domain/ticked_created_at';
-import { TicketDescription } from 'src/ticket/domain/ticked_description';
-import { TicketId } from 'src/ticket/domain/ticked_id';
-import { TicketPriority } from 'src/ticket/domain/ticked_priority';
-import { TicketStatus } from 'src/ticket/domain/ticked_status';
-import { Ticket } from 'src/ticket/domain/ticket.model';
+import { ValueObjectTransformer } from '@app/shared/infrastructure/persistence/typeorm/value_object_transformer';
+import { TicketCreatedAt } from '@app/ticket/domain/ticked_created_at';
+import { TicketDescription } from '@app/ticket/domain/ticked_description';
+import { TicketId } from '@app/ticket/domain/ticked_id';
+import { TicketPriority } from '@app/ticket/domain/ticked_priority';
+import { TicketStatus } from '@app/ticket/domain/ticked_status';
+import { Ticket } from '@app/ticket/domain/ticket.model';
 import { EntitySchema } from 'typeorm';
 
 export const TicketsEntity = new EntitySchema<Ticket>({

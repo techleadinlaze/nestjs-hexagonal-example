@@ -1,9 +1,10 @@
 import { Logger, Module } from '@nestjs/common';
-import { TicketController } from './controllers/ticket.controller';
-import { TicketRepository } from './domain/ticket.repository';
-import { TicketTypeOrm } from './infrastructure/presistence/ticket.typeorm';
-import { TicketCreator } from './application/create/ticket_creator.service';
-import { TicketFinder } from './application/find/ticket_finder.service';
+import { TicketController } from '@app/ticket/controllers/ticket.controller';
+import { TicketRepository } from '@app/ticket/domain/ticket.repository';
+import { TicketCreator } from '@app/ticket/application/create/ticket_creator.service';
+import { TicketFinder } from '@app/ticket/application/find/ticket_finder.service';
+import { TicketTypeOrm } from '@app/ticket/infrastructure/persistence/ticket.typeorm';
+import { TicketInMemory } from '@app/ticket/infrastructure/persistence/ticket.memory';
 
 @Module({
   imports: [Logger],

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Note } from '../../domain/notes.model';
-import { NoteRepository } from '../../domain/notes.repository';
+import { Note } from '@app/notes/domain/notes.model';
+import { NoteRepository } from '@app/notes/domain/notes.repository';
 
 /**
  * This is the implementation of output port, to store things in memory.
@@ -9,9 +9,9 @@ import { NoteRepository } from '../../domain/notes.repository';
 export class NoteInMemory implements NoteRepository {
   private readonly notes: Note[] = [
     {
-      id: 1,
-      ticketId: 1,
-      description: '',
+      id: '5d93330a-4d90-4703-9526-fc66c5546eb6',
+      ticketId: '5d93330a-4d90-4703-9526-fc66c5546eb6',
+      description: 'aaa',
       createdAt: new Date(),
     },
   ];

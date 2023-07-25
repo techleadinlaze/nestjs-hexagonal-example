@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Note } from '../../domain/notes.model';
-import { NoteRepository } from '../../domain/notes.repository';
+import { Note } from '@app/notes/domain/notes.model';
+import { NoteRepository } from '@app/notes/domain/notes.repository';
 
 /**
  * The implementation of the inbound port INoteService.

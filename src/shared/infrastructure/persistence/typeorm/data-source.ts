@@ -13,7 +13,7 @@ const options: DataSourceOptions = {
   entities: [
     join(
       __dirname,
-      '../../../../**/infrastructure/presistence/typeorm/*entity{.ts,.js}',
+      '../../../../**/infrastructure/persistence/typeorm/*entity{.ts,.js}',
     ),
   ],
   synchronize: true,
