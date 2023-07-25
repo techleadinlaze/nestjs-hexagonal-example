@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
 import { TicketFinder } from '@app/ticket/application/find/ticket_finder.service';
 import { TicketCreator } from '@app/ticket/application/create/ticket_creator.service';
+import { TicketPrimitive } from '../domain/ticket.primitive';
 
 @Controller('ticket')
 export class TicketController {
@@ -17,7 +18,7 @@ export class TicketController {
   }
 
   @Post()
-  async create(@Body() body) {
+  async create(@Body() body: TicketPrimitive) {
     this.logger.debug(body);
     return await this.ticketCreator.run(body);
   }

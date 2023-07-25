@@ -5,6 +5,7 @@ import { TicketModule } from '@app/ticket/ticket.module';
 import { ConfigModule } from '@nestjs/config';
 import { NotesModule } from '@app/notes/notes.module';
 import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
+import { TicketPrimitiveMother } from '@testApp/src/ticket/domain/ticket_primitive.mother';
 
 describe('TicketController (e2e)', () => {
   let app: INestApplication;
@@ -38,13 +39,7 @@ describe('TicketController (e2e)', () => {
   });
 
   it('/ticket (POST)', async () => {
-    const ticket: TicketPrimitive = {
-      id: 'f09ae5e8-0f42-45ea-98b0-c2aa344e4a1a',
-      description: 'description',
-      status: 'OPEN',
-      priority: 1,
-      createdAt: new Date().toISOString(),
-    };
+    const ticket: TicketPrimitive = TicketPrimitiveMother.random();
     return request(app.getHttpServer())
       .post('/ticket')
       .send(ticket)

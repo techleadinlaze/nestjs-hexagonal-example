@@ -3,6 +3,7 @@ import { TicketId } from './ticked_id';
 import { TicketPriority } from './ticked_priority';
 import { TicketStatus } from './ticked_status';
 import { TicketCreatedAt } from './ticked_created_at';
+import { Status } from '../enum/status.enum';
 
 export class Ticket {
   public constructor(
@@ -13,19 +14,19 @@ export class Ticket {
     public readonly createdAt: TicketCreatedAt,
   ) {}
 
-  static fromPrimitives(plainData: {
+  static fromPrimitives(request: {
     id: string;
     description: string;
-    status: string;
+    status: Status;
     priority: number;
     createdAt: string;
   }): Ticket {
     return new Ticket(
-      new TicketId(plainData.id),
-      new TicketDescription(plainData.description),
-      new TicketStatus(plainData.status),
-      new TicketPriority(plainData.priority),
-      new TicketCreatedAt(plainData.createdAt),
+      new TicketId(request.id),
+      new TicketDescription(request.description),
+      new TicketStatus(request.status),
+      new TicketPriority(request.priority),
+      new TicketCreatedAt(request.createdAt),
     );
   }
 
