@@ -6,9 +6,14 @@ import { ConfigModule } from '@nestjs/config';
 import { NotesModule } from '@app/notes/notes.module';
 import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
 import { TicketPrimitiveMother } from '@testApp/src/ticket/domain/ticket_primitive.mother';
+import { getDataSource } from '@app/shared/infrastructure/persistence/typeorm/data-source';
 
 describe('TicketController (e2e)', () => {
   let app: INestApplication;
+
+  beforeAll(async () => {
+    process.env.NODE_ENV = 'test';
+  });
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -27,6 +32,7 @@ describe('TicketController (e2e)', () => {
 
   afterAll(async () => {
     await app.close();
+    (await getDataSource()).dropDatabase();
   });
 
   it('/ticket (GET)', async () => {
@@ -34,7 +40,7 @@ describe('TicketController (e2e)', () => {
       .get('/ticket')
       .expect(200)
       .expect((response: Response) => {
-        expect(response.body['data']).toHaveLength(1);
+        expect(response.body['data']).toHaveLength(0);
       });
   });
 
@@ -44,6 +50,15 @@ describe('TicketController (e2e)', () => {
       .post('/ticket')
       .send(ticket)
       .expect(201);
+  });
+
+  it('/ticket (GET)', async () => {
+    return request(app.getHttpServer())
+      .get('/ticket')
+      .expect(200)
+      .expect((response: Response) => {
+        expect(response.body['data']).toHaveLength(1);
+      });
   });
 
   it('/notes (GET)', () => {

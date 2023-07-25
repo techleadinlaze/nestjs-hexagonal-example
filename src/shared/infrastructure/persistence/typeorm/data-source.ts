@@ -1,7 +1,10 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { join } from 'path';
-dotenv.config();
+
+let envFilte = '.env';
+if (process.env.NODE_ENV == 'test') envFilte = '.env.test';
+dotenv.config({ path: envFilte });
 
 const options: DataSourceOptions = {
   type: 'postgres',
@@ -17,7 +20,7 @@ const options: DataSourceOptions = {
     ),
   ],
   synchronize: true,
-  logging: true,
+  logging: process.env.NODE_ENV != 'test' || false,
 };
 
 const AppDataSource = new DataSource(options);
