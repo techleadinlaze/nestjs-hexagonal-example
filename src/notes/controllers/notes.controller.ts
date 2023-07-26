@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
-import { NoteFinder } from '@app/notes/application/find/note-create.service';
-import { NoteCreator } from '@app/notes/application/create/note-create.service';
+import { NoteFinder } from '@app/notes/application/find/note_create.service';
+import { NoteCreator } from '@app/notes/application/create/note_create.service';
+import { Note } from '../domain/notes.model';
 
 @Controller('notes')
 export class NoteController {
@@ -17,7 +18,7 @@ export class NoteController {
   }
 
   @Post()
-  async create(@Body() body) {
+  async create(@Body() body: Note) {
     this.logger.debug(body);
     return await this.noteCreator.run(body);
   }

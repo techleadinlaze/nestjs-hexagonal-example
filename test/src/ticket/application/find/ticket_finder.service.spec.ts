@@ -20,7 +20,7 @@ describe('TicketFinder', () => {
     expect(service).toBeDefined();
   });
 
-  it('it should return a success ticket', async () => {
+  it('it should return tickets', async () => {
     const tickets: Ticket[] = [TicketMother.random(), TicketMother.random()];
     jest
       .spyOn(repositoryMock, 'findAll')
@@ -29,7 +29,7 @@ describe('TicketFinder', () => {
     expect((await service.run({})).data).toEqual(response.data);
   });
 
-  it('it should return a success ticket', async () => {
+  it('it should return an empty ticket', async () => {
     const tickets = repositoryMock.getEmptyData();
     jest.spyOn(repositoryMock, 'findAll').mockReturnValue(tickets);
 

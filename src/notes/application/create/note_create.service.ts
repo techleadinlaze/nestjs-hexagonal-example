@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Note } from '@app/notes/domain/notes.model';
 import { NoteRepository } from '@app/notes/domain/notes.repository';
+import { Uuid } from '@app/shared/domain/value_object/uuid';
 
 /**
  * The implementation of the inbound port INoteService.
@@ -12,14 +13,8 @@ export class NoteCreator {
     private readonly noteRepository: NoteRepository,
   ) {}
 
-  async run(body: any): Promise<Note> {
-    const note = new Note(
-      body.id,
-      body.description,
-      body.ticketId,
-      body.createdAt,
-    );
-    await this.noteRepository.create(note);
-    return note;
+  async run(body: Note): Promise<Note> {
+    await this.noteRepository.create(body);
+    return body;
   }
 }
