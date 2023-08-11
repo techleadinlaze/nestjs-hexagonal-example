@@ -1,4 +1,4 @@
-import { Logger, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TicketController } from '@app/ticket/controllers/ticket.controller';
 import { TicketRepository } from '@app/ticket/domain/ticket.repository';
 import { TicketCreator } from '@app/ticket/application/create/ticket_creator.service';
@@ -7,7 +7,6 @@ import { TicketTypeOrm } from '@app/ticket/infrastructure/persistence/ticket.typ
 import { TicketInMemory } from '@app/ticket/infrastructure/persistence/ticket.memory';
 
 @Module({
-  imports: [Logger],
   controllers: [TicketController],
   providers: [
     TicketFinder,

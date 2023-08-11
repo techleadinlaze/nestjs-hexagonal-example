@@ -8,6 +8,6 @@ export class Note {
     public readonly createdAt: Date,
   ) {
     // example, this is not recommended, it should be a value object.
-    new Uuid(id);
+    //new Uuid(id);
   }
 }
