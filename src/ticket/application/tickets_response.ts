@@ -3,9 +3,9 @@ import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
 import { HttpResponse } from '@app/shared/domain/http_response';
 
 export class TicketsResponse extends HttpResponse<TicketPrimitive[]> {
-  constructor(data: Ticket[], succecs: boolean, message: string) {
+  public constructor(data: Ticket[], succecs: boolean, message: string) {
     super(
-      data.map((ticket) => ticket.toPrimitives()),
+      data.map((ticket): TicketPrimitive => ticket.toPrimitives()),
       succecs,
       message,
     );

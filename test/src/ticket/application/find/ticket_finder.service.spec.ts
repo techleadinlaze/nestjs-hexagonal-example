@@ -1,8 +1,8 @@
-import { TicketFinder } from '@app/ticket/application/find/ticket_finder.service';
-import { TicketsResponse } from '@app/ticket/application/find/tickets_response';
+import { TicketFinder } from '@app/ticket/application/ticket_finder.service';
 import { TicketRepositoryMock } from '../../infrastructure/ticket_repository.mock';
 import { Ticket } from '@app/ticket/domain/ticket.model';
 import { TicketMother } from '../../domain/ticket.mother.';
+import { TicketsResponse } from '@app/ticket/application/tickets_response';
 
 jest.mock('@app/ticket/domain/ticket.repository');
 

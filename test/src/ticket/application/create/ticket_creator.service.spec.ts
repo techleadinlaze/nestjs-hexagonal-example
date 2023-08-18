@@ -1,10 +1,10 @@
-import { TicketCreator } from '@app/ticket/application/create/ticket_creator.service';
 import { TicketId } from '@app/ticket/domain/ticked_id';
 import { InvalidArgumentError } from '@app/shared/domain/value_object/invalid_argument_error';
 import { TicketRepositoryMock } from '../../infrastructure/ticket_repository.mock';
 import { TicketMother } from '../../domain/ticket.mother.';
 import { TicketPrimitiveMother } from '../../domain/ticket_primitive.mother';
 import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
+import { TicketCreator } from '@app/ticket/application/ticket_creator.service';
 
 jest.mock('@app/ticket/domain/ticket.repository');
 

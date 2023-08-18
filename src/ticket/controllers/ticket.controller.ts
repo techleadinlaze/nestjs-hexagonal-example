@@ -1,24 +1,29 @@
 import { Body, Controller, Get, Logger, Post, Query } from '@nestjs/common';
-import { TicketFinder } from '@app/ticket/application/find/ticket_finder.service';
-import { TicketCreator } from '@app/ticket/application/create/ticket_creator.service';
-import { TicketPrimitive } from '../domain/ticket.primitive';
+import { TicketFinder } from '@app/ticket/application/ticket_finder.service';
+import { TicketCreator } from '@app/ticket/application/ticket_creator.service';
+import { TicketCreateDto } from '../infrastructure/dtos/ticket_create.dto';
+import { Ticket } from '../domain/ticket.model';
+import { TicketsResponse } from '../application/tickets_response';
+import { TicketQueryDto } from '../infrastructure/dtos/ticket_query.dto';
 
 @Controller('ticket')
 export class TicketController {
   private readonly logger = new Logger(TicketController.name);
 
-  constructor(
-    private ticketFinder: TicketFinder,
-    private ticketCreator: TicketCreator,
+  public constructor(
+    private readonly ticketFinder: TicketFinder,
+    private readonly ticketCreator: TicketCreator,
   ) {}
 
   @Get()
-  async findAll(@Query() query: { limit; offset; search }) {
+  public async findAll(
+    @Query() query: TicketQueryDto,
+  ): Promise<TicketsResponse> {
     return await this.ticketFinder.run(query);
   }
 
   @Post()
-  async create(@Body() body: TicketPrimitive) {
+  public async create(@Body() body: TicketCreateDto): Promise<Ticket> {
     this.logger.debug(body);
     return await this.ticketCreator.run(body);
   }

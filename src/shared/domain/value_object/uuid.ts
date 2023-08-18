@@ -3,7 +3,7 @@ import { ValueObject } from './value_objects';
 import { InvalidArgumentError } from './invalid_argument_error';
 
 export class Uuid extends ValueObject<string> {
-  constructor(value: string) {
+  public constructor(value: string) {
     super(value);
     this.ensureIsValidUuid(value);
   }

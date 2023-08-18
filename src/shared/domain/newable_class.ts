@@ -1,3 +1,5 @@
+import { Primitives } from './types/primitives.type';
+
 export interface NewableClass<T> extends Function {
-  new (...args: any[]): T;
+  new (...args: Primitives[]): T;
 }

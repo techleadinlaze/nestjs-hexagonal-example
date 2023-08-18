@@ -19,7 +19,7 @@ export const NotesEntity = new EntitySchema<Note>({
     createdAt: {
       type: 'timestamptz',
       name: 'created_at',
-      default: () => 'CURRENT_TIMESTAMP',
+      default: (): string => 'CURRENT_TIMESTAMP',
     },
   },
 });
