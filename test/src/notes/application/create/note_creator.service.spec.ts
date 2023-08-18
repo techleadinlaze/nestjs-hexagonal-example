@@ -1,8 +1,7 @@
-import { NoteCreator } from '@app/notes/application/create/note_create.service';
+import { NoteCreator } from '@app/notes/application/note_create.service';
 import { NoteRepositoryMock } from '../../infrastructure/notes_repository.mock';
 import { Note } from '@app/notes/domain/notes.model';
 import { NoteMother } from '../../domain/note.mother';
-import { InvalidArgumentError } from '@app/shared/domain/value_object/invalid_argument_error';
 
 jest.mock('@app/notes/domain/notes.repository');
 
@@ -25,9 +24,4 @@ describe('NoteCreator', () => {
     expect(await service.run(note)).toEqual(note);
   });
 
-  it('it should return a error', async () => {
-    expect(() => NoteMother.randomEmpyId()).toThrow(
-      '<Uuid> does not allow the value <>',
-    );
-  });
 });

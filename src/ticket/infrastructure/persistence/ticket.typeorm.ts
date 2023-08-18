@@ -5,6 +5,7 @@ import { TicketsEntity } from '@app/ticket/infrastructure/persistence/typeorm/ti
 import { Ticket } from '@app/ticket/domain/ticket.model';
 import { TicketId } from '@app/ticket/domain/ticked_id';
 import { TypeOrmRepository } from '@app/shared/infrastructure/persistence/typeorm.repository';
+import { Primitive } from '@ngrx/store/src/models';
 
 @Injectable()
 export class TicketTypeOrm
@@ -23,23 +24,19 @@ export class TicketTypeOrm
     return ticket.getOne();
   }
 
-  public async findAll(query: any): Promise<Ticket[]> {
+  public async findAll(query: Record<string, Primitive>): Promise<Ticket[]> {
     const search = query.search || '';
     const repository = await this.repository();
     const tickets = repository.createQueryBuilder();
     if (search) {
       tickets.where('description ILIKE lower(:search)', {
-        search: `%${search}%`,
+        search: `%${search.toString()}%`,
       });
     }
     return await tickets.getMany();
   }
 
   public async create(ticket: Ticket): Promise<Ticket> {
-    try {
-      return await this.persist(ticket);
-    } catch (error) {
-      throw error;
-    }
+    return await this.persist(ticket);
   }
 }

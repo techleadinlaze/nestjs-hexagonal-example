@@ -11,6 +11,6 @@ export abstract class TypeOrmRepository<T> {
 
   protected async persist(model: T): Promise<T> {
     const repository = await this.repository();
-    return await repository.save(model as any);
+    return await repository.save(model);
   }
 }

@@ -16,14 +16,14 @@ export class NoteInMemory implements NoteRepository {
     },
   ];
 
-  create(note: Note): Promise<Note> {
+  public create(note: Note): Promise<Note> {
     this.notes.push(note);
     return new Promise((resolve) => {
       return resolve(note);
     });
   }
 
-  findAll(query): Promise<Note[]> {
+  public findAll(query): Promise<Note[]> {
     return new Promise((resolve) => {
       return resolve(this.notes);
     });

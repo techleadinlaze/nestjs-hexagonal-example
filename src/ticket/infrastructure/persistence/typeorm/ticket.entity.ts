@@ -35,7 +35,7 @@ export const TicketsEntity = new EntitySchema<Ticket>({
     createdAt: {
       type: 'timestamptz',
       name: 'created_at',
-      default: () => 'CURRENT_TIMESTAMP',
+      default: (): string => 'CURRENT_TIMESTAMP',
       transformer: ValueObjectTransformer(TicketCreatedAt),
     },
   },

@@ -4,15 +4,15 @@ import { Note } from '@app/notes/domain/notes.model';
 export class NoteRepositoryMock implements NoteRepository {
   public notes: Note[] = [];
 
-  async findAll(): Promise<Note[]> {
+  public async findAll(): Promise<Note[]> {
     return Promise.resolve(this.notes);
   }
 
-  async getEmptyData(): Promise<Note[]> {
+  public async getEmptyData(): Promise<Note[]> {
     return Promise.resolve(this.notes);
   }
 
-  create(ticket: Note): Promise<Note> {
+  public create(ticket: Note): Promise<Note> {
     return Promise.resolve(ticket);
   }
 }

@@ -1,4 +1,4 @@
-import { NoteFinder } from '@app/notes/application/find/note_create.service';
+import { NoteFinder } from '@app/notes/application/note_finder.service';
 import { NoteRepositoryMock } from '../../infrastructure/notes_repository.mock';
 import { Note } from '@app/notes/domain/notes.model';
 import { NoteMother } from '../../domain/note.mother';

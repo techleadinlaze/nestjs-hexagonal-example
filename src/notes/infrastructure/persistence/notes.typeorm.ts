@@ -14,7 +14,7 @@ export class NotesTypeOrm
     return NotesEntity;
   }
 
-  public async findAll(query: any): Promise<Note[]> {
+  public async findAll(query: Record<string, string>): Promise<Note[]> {
     const search = query.search || '';
     const repository = await this.repository();
     const notes = repository.createQueryBuilder();
@@ -27,10 +27,6 @@ export class NotesTypeOrm
   }
 
   public async create(note: Note): Promise<Note> {
-    try {
-      return await this.persist(note);
-    } catch (error) {
-      throw error;
-    }
+    return await this.persist(note);
   }
 }

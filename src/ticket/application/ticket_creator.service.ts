@@ -5,12 +5,12 @@ import { TicketPrimitive } from '@app/ticket/domain/ticket.primitive';
 
 @Injectable()
 export class TicketCreator {
-  constructor(
+  public constructor(
     @Inject(TicketRepository)
     private readonly tickerRepository: TicketRepository,
   ) {}
 
-  async run(request: TicketPrimitive): Promise<Ticket> {
+  public async run(request: TicketPrimitive): Promise<Ticket> {
     const ticket = Ticket.fromPrimitives(request);
     await this.tickerRepository.create(ticket);
     return ticket;
