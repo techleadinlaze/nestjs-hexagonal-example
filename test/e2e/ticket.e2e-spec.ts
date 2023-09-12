@@ -32,7 +32,13 @@ describe('TicketController (e2e)', () => {
 
   afterAll(async () => {
     await app.close();
-    (await getDataSource()).dropDatabase();
+    const datasource = await getDataSource();
+		try {
+			await datasource.dropDatabase();
+			await datasource.destroy();
+		} catch (error) {
+			console.error('Error dropping database, maybe it does not exist');
+		}
   });
 
   it('/ticket (GET)', async () => {
