@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { EntitySchema } from 'typeorm';
+import { EntityTarget } from 'typeorm';
 import { TypeOrmRepository } from '@app/shared/infrastructure/persistence/typeorm.repository';
 import { NotesEntity } from '@app/notes/infrastructure/persistence/typeorm/notes.entity';
 import { Note } from '@app/notes/domain/notes.model';
@@ -10,7 +10,7 @@ export class NotesTypeOrm
   extends TypeOrmRepository<Note>
   implements NoteRepository
 {
-  protected entitySchema(): EntitySchema<Note> {
+  protected entityTarget(): EntityTarget<Note> {
     return NotesEntity;
   }
 

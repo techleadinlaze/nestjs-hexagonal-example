@@ -1,25 +1,31 @@
 import { Note } from '@app/notes/domain/notes.model';
-import { EntitySchema } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+} from 'typeorm';
 
-export const NotesEntity = new EntitySchema<Note>({
-  name: 'Note',
-  tableName: 'notes',
-  target: Note,
-  columns: {
-    id: {
-      type: 'character varying',
-      primary: true,
-    },
-    ticketId: {
-      type: 'character varying',
-    },
-    description: {
-      type: 'text',
-    },
-    createdAt: {
-      type: 'timestamptz',
-      name: 'created_at',
-      default: (): string => 'CURRENT_TIMESTAMP',
-    },
-  },
-});
+@Entity()
+export class NotesEntity extends Note {
+  @PrimaryColumn({
+    nullable: false,
+    name: 'id',
+  })
+  id: string;
+
+  @Column({
+    type: 'text',
+    nullable: false,
+    name: 'description',
+  })
+  description: string;
+
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'created_at',
+    nullable: false,
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  createdAt: Date;
+}

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { EntitySchema } from 'typeorm';
+import { EntitySchema, EntityTarget } from 'typeorm';
 import { TicketRepository } from '@app/ticket/domain/ticket.repository';
 import { TicketsEntity } from '@app/ticket/infrastructure/persistence/typeorm/ticket.entity';
 import { Ticket } from '@app/ticket/domain/ticket.model';
@@ -12,7 +12,7 @@ export class TicketTypeOrm
   extends TypeOrmRepository<Ticket>
   implements TicketRepository
 {
-  protected entitySchema(): EntitySchema<Ticket> {
+  protected entityTarget(): EntityTarget<Ticket> {
     return TicketsEntity;
   }
 
